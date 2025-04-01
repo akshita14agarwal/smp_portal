@@ -1,0 +1,42 @@
+.upload-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: violet;
+    color: white;
+  }
+  
+  .upload-container h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .upload-container input {
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 1rem;
+    background: white;
+    color: violet;
+    border: none;
+    border-radius: 8px;
+  }
+  
+  .upload-container button {
+    padding: 10px 15px;
+    font-size: 1.2rem;
+    background: white;
+    color: violet;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+  }
+  
+  .upload-container button:hover {
+    background: darkviolet;
+    color: white;
+  }
+  
