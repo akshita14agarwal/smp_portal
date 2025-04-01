@@ -3,10 +3,11 @@
   background-color: green;
   height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
   text-align: center;
+  flex-direction: column;
+  align-items: center;
+  
   background: url('C:\Users\akshi\Desktop\SMP\smp_portal\frontend\public\images\smp.png') no-repeat center center/cover;
   color: black;
 }
@@ -16,7 +17,7 @@
   font-weight: bold;
 }
 
-.nav-buttons {
+/*.nav-buttons {
   position: absolute;
   top: 20px;
   right: 20px;
@@ -30,8 +31,8 @@
   cursor: pointer;
   border-radius: 5px;
 }
-
-.login-btn {
+*/
+/*.login-btn {
   background-color: white;
   color: black;
 }
@@ -39,4 +40,36 @@
 .signup-btn {
   background-color: black;
   color: white;
+}*/
+/* Purple Buttons */
+.auth-btn {
+  background: #6a0dad;  /* Purple */
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
 }
+
+.auth-btn:hover {
+  background: #5a0ca8;
+}
+
+/* Logout Button */
+.logout-btn {
+  background: red;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.logout-btn:hover {
+  background: darkred;
+}
+

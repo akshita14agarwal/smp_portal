@@ -1,85 +1,209 @@
 /* Mentor Dashboard Styles */
 .dashboard-container {
-    height: 100vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    background: violet;
-    color: white;
-    padding: 20px;
-    position: relative;
-  }
+  height: 100vh;
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: flex-start;
+  background: violet;
+  color: black;
+  padding: 20px;
+  position: relative;
+}
+
+/* Mentor and Mentees Wrapper */
+.mentor-mentees-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Ensures space between mentor profile and mentees list */
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+/* Mentor Profile Section */
+.mentor-profile {
+  background: rgba(255, 255, 255, 0.9);
+  color: black;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 300px;
+}
+
+/* Profile Picture */
+.profile-pic {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid darkviolet;
+  margin-bottom: 10px;
+}
+
+/* Edit Profile Button */
+.mentor-profile button {
+  padding: 10px 15px;
+  font-size: 1rem;
+  background: darkviolet;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: bold;
+}
+
+.mentor-profile button:hover {
+  background: white;
+  color: darkviolet;
+}
+
+/* Students List (Mentees) */
+.students-section {
+  background: rgba(255, 255, 255, 0.9);
+  color: black;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 300px;
+}
+
+.students-section h2 {
+  margin-bottom: 15px;
+}
+
+.students-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.students-section li {
+  padding: 10px;
+  background: black;
+  color: white;
+  margin: 5px 0;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+/* Add Student Button */
+.add-student-btn {
+  margin-top: 15px;
+  padding: 10px 15px;
+  font-size: 1rem;
+  background: darkviolet;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: bold;
+}
+
+.add-student-btn:hover {
+  background: white;
+  color: darkviolet;
+}
+/* Student Input Field */
+.student-input {
+  width: 80%;
+  padding: 10px;
+  margin-top: 10px;
+  border: 2px solid darkviolet;
+  border-radius: 8px;
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* ✅ Right Section - Adjust Positioning */
+.right-section {
+  flex: 2;
+  display: flex;
+  bottom: 20px;
+  margin-top: 20px;
+  flex-direction: column;
+  align-self: flex-end;
+  align-items: flex-start;
+}
+
+/* ✅ Upload Buttons - Top Right */
+.top-right-buttons {
+  display: flex;
+  padding: 10px 15px;
   
-  /* Mentor Name on the Top Left */
-  .mentor-name {
-    position: absolute;
-    top: 20px;
-    left: 20px; /* Shifted to left */
-    font-size: 1.5rem;
-    font-weight: bold;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 10px 15px;
-    border-radius: 10px;
-  }
+  gap: 20px;
+  align-self: flex-end; /* Moves buttons to top right */
+  margin-top: 20px;
+  align-items: flex-start;
+  flex-direction: column;
+ 
+}
+
+/* ✅ Upload Buttons Styling */
+.upload-btn {
+  background: #6a0dad; /* Purple */
+  color: white;
+  border: none;
+  display: flex;
+  padding: 10px 15px;
+  flex-direction: column;
+  font-size: 10px;
+  top:10px;
+  position: absolute;
+  right: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  align-items: flex-start;
+}
+/* notes */
+.upload-btns{
+  background: #6a0dad; /* Purple */
+  color: white;
+  border: none;
+  display: flex;
+  padding: 10px 40px;
+  flex-direction: column;
+  font-size: 10px;
+  top:10px;
+  position: absolute;
+  right: 170px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  align-items: flex-start;
+}
+.upload-btn:hover {
+  background: #5a0ca8;
+}
+.upload-btns:hover {
+  background: #5a0ca8;
+}
+
+/* ✅ Announcements Section */
+.announcement-section {
+  width: 100%;
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  align-items: flex-start; /* Align items to the left (change if needed) */
+  align-self: flex-end;
+
+
   
-  /* Buttons on Top Right */
-  .top-right {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-  }
+}
+
+/* Announcement Items */
+.announcement-item {
+  background: white;
+  padding: 10px;
+  border-radius: 5px;
+  border-left: 5px solid #6a0dad; /* Purple highlight */
   
-  .top-right button {
-    padding: 10px 15px;
-    font-size: 1rem;
-    background: white;
-    color: violet;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s;
-    font-weight: bold;
-  }
-  
-  .top-right button:hover {
-    background: darkviolet;
-    color: white;
-  }
-  
-  /* Students List on the Left */
-  .students-section {
-    background: rgba(255, 255, 255, 0.9);
-    color: black;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    width: 350px;
-    position: absolute;
-    left: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  
-  .students-section h2 {
-    margin-bottom: 15px;
-  }
-  
-  .students-section ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .students-section li {
-    padding: 10px;
-    background: black;
-    color: white;
-    margin: 5px 0;
-    border-radius: 8px;
-    font-weight: bold;
-  }
-  
+}

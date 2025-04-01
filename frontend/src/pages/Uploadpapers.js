@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles/upload.css";
+import "../styles/dashboard.css";
 
 const UploadPapers = () => {
   const [file, setFile] = useState(null);

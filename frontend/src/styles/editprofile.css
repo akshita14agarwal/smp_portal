@@ -1,0 +1,57 @@
+.edit-profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    background-color: violet;
+    color: white;
+  }
+  
+  .profile-form {
+    background: rgba(255, 255, 255, 0.9);
+    color: black;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .profile-form label {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .profile-form input,
+  .profile-form textarea {
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+  }
+  
+  .profile-form button {
+    margin-top: 15px;
+    padding: 10px;
+    background: white;
+    color: violet;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .profile-form button:hover {
+    background: darkviolet;
+    color: white;
+  }
+  
+  .profile-preview {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 10px auto;
+    display: block;
+  }
+  
