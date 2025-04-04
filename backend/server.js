@@ -5,18 +5,27 @@ import dotenv from "dotenv";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs"; 
 import path from "path"; // ✅ Import path for static files
+import { fileURLToPath } from "url";
 import authRoutes from "./routes/authRoutes.js"; 
 import User from "./models/mentor.js"; 
 import announcementRoutes from "./routes/announcement.js";
-import notesRoutes from "./routes/notes.js"; // ✅ Notes Route Added
-
+import notesRoutes from "./routes/notes.js"; // ✅ Notes Route Adde
+import mentorRoutes from "./routes/mentorRoutes.js";
+import previousPaperRoutes from './routes/previouspaperRoutes.js';
 dotenv.config();
 
 const app = express();
 
 app.use(express.json());  
+// These 3 lines allow __dirname to work with ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+// Serve the uploads folder
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-const allowedOrigins = ["http://localhost:3000", "http://localhost:3001"];
+
+
+const allowedOrigins = ["http://localhost:3000", "http://localhost:3001",];
 /*app.use(cors({
     origin: "*",  
     credentials: true,
@@ -52,7 +61,8 @@ app.options("*", (req, res) => {
 app.use("/api/auth", authRoutes);
 app.use("/api/announcements", announcementRoutes);
 app.use("/api/notes", notesRoutes);
-
+app.use("api/mentors", mentorRoutes);
+app.use('/api/papers', previousPaperRoutes);
 // 📌 Serve static files (PDFs) from "uploads" folder
 app.use("/uploads", express.static("uploads"));
 

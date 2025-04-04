@@ -10,6 +10,7 @@ import MenteeDashboard from "./pages/MenteeDashboard";
 import KnowYourMentors from "./pages/KnowYourMentors";
 import UploadPapers from "./pages/Uploadpapers";
 import UploadNotes from "./pages/Uploadnotes";
+import Papers from "./pages/Papers";
 
 function App() {
     const [user, setUser] = useState(false);
@@ -55,11 +56,14 @@ function App() {
                 <Route element={<ProtectedRoute allowedRoles={["mentor"]} />}>
                     <Route path="/MentorDashboard" element={<MentorDashboard />} />
                     <Route path="/upload-notes" element={<UploadNotes />} />
+                    <Route path="/upload-papers" element= {<UploadPapers/>}/>
 
                 </Route>
 
                 <Route element={<ProtectedRoute allowedRoles={["mentee"]} />}>
-                 <Route path="/notes" element={<Notes />} />
+                 <Route path="/Notes" element={<Notes />} />
+                 <Route path= "/ViewPreviousPapers" element ={<Papers/>}/>
+
 
                     <Route path="/MenteeDashboard" element={<MenteeDashboard />} />
                     <Route path="/know-your-mentors" element={<KnowYourMentors />} />

@@ -59,6 +59,34 @@
   color: darkviolet;
 }
 
+.calendar-section {
+  position: absolute;
+  top: 100px; /* Adjust this to move it inside purple space */
+  left: 85%;
+  transform: translateX(-50%);
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 300px;
+}
+
+
+.react-calendar {
+  width: 100%;
+  max-width: 300px;
+  background: white;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.react-calendar__tile--active {
+  background: #6a0dad !important;
+  color: white !important;
+  border-radius: 50%;
+}
+
 /* Students List (Mentees) */
 .students-section {
   background: rgba(255, 255, 255, 0.9);
@@ -68,6 +96,7 @@
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
   text-align: center;
   width: 300px;
+  order: 2;
 }
 
 .students-section h2 {
@@ -119,25 +148,41 @@
 
 /* ✅ Right Section - Adjust Positioning */
 .right-section {
-  flex: 2;
+  /*flex: 2;
   display: flex;
   bottom: 20px;
   margin-top: 20px;
-  flex-direction: column;
+  
   align-self: flex-end;
+
   align-items: flex-start;
+  flex-direction: column;*/
+  display: flex;
+  flex-direction: column; /* ✅ Stack items vertically */
+  align-items: center;
+  gap: 20px; /* ✅ Space between upload buttons & announcements */
+  width: 100%;
 }
+
+
+
 
 /* ✅ Upload Buttons - Top Right */
 .top-right-buttons {
-  display: flex;
+  /*display: flex;
   padding: 10px 15px;
   
   gap: 20px;
   align-self: flex-end; /* Moves buttons to top right */
-  margin-top: 20px;
+  /*margin-top: 20px;
   align-items: flex-start;
-  flex-direction: column;
+  flex-direction: column;*/
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  width: 100%;
+
+  
  
 }
 
@@ -184,20 +229,35 @@
 
 /* ✅ Announcements Section */
 .announcement-section {
-  width: 100%;
-  background: #f9f9f9;
+  /*background: #f9f9f9;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   margin-top: 10px;
   display: flex;
   flex-direction: column; /* Stack elements vertically */
-  align-items: flex-start; /* Align items to the left (change if needed) */
-  align-self: flex-end;
+ /* align-items: flex-start; /* Align items to the left (change if needed) */
+  /*align-self: flex-end;
+  width: 100%; /* ✅ Full width of parent */
+  width: 100%; /* ✅ Adjust width to fit properly */
+  background: plum;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  order: 2; /* ✅ Moves announcement section right below Upload Buttons */
+
 
 
   
 }
+.note-item {
+  background-color: #f9f9f9;
+  padding: 10px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
 
 /* Announcement Items */
 .announcement-item {
@@ -206,4 +266,86 @@
   border-radius: 5px;
   border-left: 5px solid #6a0dad; /* Purple highlight */
   
+}
+
+.dashboard-container h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.dashboard-section {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.card {
+  flex: 1 1 250px;
+  background: white;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.list li {
+  margin: 0.5rem 0;
+  padding: 0.7rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.list li:hover {
+  background: #e8f0fe;
+  cursor: pointer;
+}
+
+.clickable {
+  cursor: pointer;
+}
+.announcements-section {
+  position: sticky;
+  top: 1rem;
+  background-color: #fff4e6;
+  border: 2px dashed #ff9900;
+}
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.dashboard-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.dashboard-right {
+  position: relative;
 }

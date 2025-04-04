@@ -11,6 +11,7 @@ const Home = () => {
       
     
       <h1 className="home-heading">Welcome to SMP!</h1>
+      <h3> for the students , by the students</h3>
     </div>
   );
 };

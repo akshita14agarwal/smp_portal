@@ -3,9 +3,40 @@ import { useNavigate } from "react-router-dom";
 import '../styles/dashboard.css';
 import'../styles/auth.css';
 import axios from "axios";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css"; // Import styles
+import "../styles/CalendarStyles.css"; // Custom CSS for highlighting
+
+
 
 const MentorDashboard = () => {
   const navigate = useNavigate();
+  //meetings
+
+  const [date, setDate] = useState(new Date());
+  const [meetings, setMeetings] = useState([
+    { date: "2025-04-10", title: "Meeting with Student A" },
+    { date: "2025-04-12", title: "Doubt Session with Group" },
+  ]);
+  const [selectedDates, setSelectedDates] = useState([]); // Store highlighted dates
+
+
+
+    // Function to format dates for comparison
+    const formatDate = (date) => date.toISOString().split("T")[0];
+    // Toggle date selection for meeting scheduling
+  const handleDateClick = (selectedDate) => {
+    const formattedDate = formatDate(selectedDate);
+
+    setSelectedDates((prev) =>
+      prev.includes(formattedDate)
+        ? prev.filter((date) => date !== formattedDate) // Remove if already selected
+        : [...prev, formattedDate] // Add if not selected
+    );
+  };
+
+
+
 
   const [mentor, setMentor] = useState({
     name: "Hello SMP Mentor, Akshita Agarwal",
@@ -22,7 +53,8 @@ const MentorDashboard = () => {
   const fetchAnnouncements = async () => {
     try {
       const res = await axios.get("http://localhost:5000/api/announcements/view");
-      setAnnouncements(res.data);
+      setAnnouncements(res.data.map(ann => ({ title: ann.title, message: ann.content }))); // ✅ Correct field names
+
     } catch (err) {
       alert("Failed to fetch announcements");
     }
@@ -49,12 +81,17 @@ const MentorDashboard = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/announcements/create", announcement, { withCredentials: true });
+      await axios.post("http://localhost:5000/api/announcements/create", 
+        { title: announcement.title, content: announcement.message }, // ✅ Match backend field names
+        { withCredentials: true }
+      );
       alert("Announcement posted successfully!");
-      setAnnouncement({ title:"", message: "" });
+      setAnnouncement({ title: "", message: "" });
       fetchAnnouncements(); // ✅ Refresh after posting
     } catch (err) {
       alert("Failed to post announcement");
+  
+
     }
   };
 
@@ -95,7 +132,37 @@ const MentorDashboard = () => {
         <div className="top-right-buttons">
           <button className ="upload-btns"onClick={() => navigate("/upload-notes")}>Upload Notes</button>
           <button className="upload-btn" onClick={() => navigate("/upload-papers")}>Upload Previous Year Paper</button>
+        </div> {/* Calendar Section */}
+        <div className="calendar-section">
+          <h3>📅 Upcoming Meetings</h3>
+          <Calendar
+            onClickDay={handleDateClick}
+            value={date}
+            tileClassName={({ date }) =>
+              selectedDates.includes(formatDate(date)) ? "highlight" : null
+            }
+          />
+
+          <h4>📝 Meetings on {formatDate(date)}</h4>
+          <ul>
+            {meetings
+              .filter((m) => m.date === formatDate(date))
+              .map((m, index) => (
+                <li key={index}>{m.title}</li>
+              ))}
+          </ul>
+
+          <h4>🟡 Selected Meeting Dates</h4>
+          <ul>
+            {selectedDates.length > 0 ? (
+              selectedDates.map((d, index) => <li key={index}>{d}</li>)
+            ) : (
+              <p>No meetings scheduled</p>
+            )}
+          </ul>
         </div>
+
+
 
         {/* ✅ Announcements Below Upload Buttons */}
         <div className="announcement-section">

@@ -3,6 +3,7 @@ import multer from "multer";
 import path from "path";
 import { verifyToken, isMentor } from "../middleware/authMiddleware.js";
 import Note from "../models/Note.js";
+import { getAllNotes } from "../controllers/noteController.js";
 
 const router = express.Router();
 

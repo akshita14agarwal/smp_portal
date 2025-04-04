@@ -1,42 +1,35 @@
-import { useState } from "react";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 const ViewNotes = () => {
-    const [subject, setSubject] = useState("");
-    const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState([]);
 
+  useEffect(() => {
     const fetchNotes = async () => {
-        const res = await axios.get(`http://localhost:5000/api/notes/view?subject=${subject}`, {
-            headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-        });
-        setNotes(res.data);
+      try {
+        const res = await fetch("http://localhost:5000/api/notes");
+        const data = await res.json();
+        setNotes(data);
+      } catch (err) {
+        console.error("Failed to fetch notes:", err);
+      }
     };
 
-    return (
-        <div>
-            <h2>View Notes</h2>
-            <select onChange={(e) => setSubject(e.target.value)}>
-                <option value="">All Subjects</option>
-                <option value="Math">Math</option>
-                <option value="Physics">Physics</option>
-                <option value="CS">Computer Science</option>
-            </select>
-            <button onClick={fetchNotes}>View Notes</button>
+    fetchNotes();
+  }, []);
 
-            <ul>
-                {notes.map((note) => (
-                    <li key={note._id}>
-                        <h3>{note.title}</h3>
-                        <p>Subject: {note.subject}</p>
-                        <p>Uploaded by: {note.uploadedBy?.name || "Unknown"}</p>
-                        <a href={`http://localhost:5000/${note.filePath}`} target="_blank" rel="noopener noreferrer">
-                            📄 View PDF
-                        </a>
-                    </li>
-                ))}
-            </ul>
-        </div>
-    );
+  return (
+    <div className="p-4">
+      <h2 className="text-2xl font-bold mb-4">Available Notes</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {notes.map((note) => (
+          <div key={note._id} className="p-4 border rounded-xl shadow">
+            <h3 className="font-semibold text-lg">{note.title}</h3>
+            <p className="text-sm text-gray-700 mt-2">{note.content}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default ViewNotes;

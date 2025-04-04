@@ -56,3 +56,4 @@ export const fetchNotes = async (subject = "", token) => {
     throw error;
   }
 };
+
