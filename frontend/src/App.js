@@ -16,6 +16,8 @@ function App() {
     const [user, setUser] = useState(false);
 
     useEffect(() => {
+
+
         const user = localStorage.getItem("user");
         if (user) {
             setUser(true);
@@ -32,7 +34,7 @@ function App() {
     return (
         <Router>
            <nav style={{ display: "flex", justifyContent: "space-between", padding: "10px", background: "#ddd" }}>
-                <h1>SMP Portal</h1>
+                <h1>EduMentor</h1>
                 <div className ="auth-buttons">
                     {user ? (
                         <>

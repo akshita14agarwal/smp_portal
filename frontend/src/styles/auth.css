@@ -5,16 +5,22 @@
   align-items: center;
   height: 100vh;
   background-color: #f4f4f9;
+  background: url('C:\Users\akshi\Desktop\SMP\smp_portal\frontend\public\images\login.jpg') no-repeat center center/cover;
+
 }
 
 /* Login & Signup Form */
 .auth-form {
-  background: #fff;
+  /*background: #fff;*/
+  background-color: rgba(255, 255, 255, 0.85); /* semi-transparent white */
+
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
   width: 320px;
+  
+
 }
 
 /* Input Fields */
